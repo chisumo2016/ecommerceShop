@@ -24,7 +24,38 @@ Route::get('/dashboard', 'AdminController@show_dashboard');
 Route::post('/admin-dashboard', 'AdminController@dashboard');
 Route::get('/logout', 'SuperAdminController@logout');
 
-//Category Related to the root
 
-Route::get('/add-category', 'CategoryController@add');
-Route::get('/all-category', 'CategoryController@index');
+
+Route::resource('categories', 'CategoryController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Category Related to the root
+//Route::get('/all-category', 'CategoryController@index');
+//Route::get('/add-category', 'CategoryController@add');
+//Route::post('/save-category', 'CategoryController@save_category');
+
+//Route::get('categories','CategoryController')->name('category.index');
+//Route::get('category/create','CategoryController')->name('create');
+//Route::post('category','CategoryController')->name('category.store');

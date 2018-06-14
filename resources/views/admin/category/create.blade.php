@@ -15,6 +15,7 @@
 
     <div class="row-fluid sortable">
         <div class="box span12">
+
             <div class="box-header" data-original-title>
                 <h2><i class="halflings-icon edit"></i><span class="break"></span>Add Category</h2>
                 <div class="box-icon">
@@ -23,15 +24,17 @@
                     <a href="#" class="btn-close"><i class="halflings-icon remove"></i></a>
                 </div>
             </div>
+
             <div class="box-content">
-                <form class="form-horizontal" method="post" action="">
+                <form class="form-horizontal" method="post" action="{{ route('categories.store') }}">
                     {{ csrf_field() }}
+
                     <fieldset>
 
                         <div class="control-group">
                             <label class="control-label" for="date01">Category Name</label>
                             <div class="controls">
-                                <input type="text" class="input-xlarge" name="category" id="category" >
+                                <input type="text" class="input-xlarge" name="category_name" id="category_name" >
                             </div>
                         </div>
 
