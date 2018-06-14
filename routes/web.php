@@ -26,4 +26,5 @@ Route::get('/logout', 'SuperAdminController@logout');
 
 //Category Related to the root
 
-Route::get('/add-category', 'CategoryController@index');
+Route::get('/add-category', 'CategoryController@add');
+Route::get('/all-category', 'CategoryController@index');
