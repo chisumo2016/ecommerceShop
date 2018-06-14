@@ -29,6 +29,7 @@
     <link rel="shortcut icon" href="{{URL::to('backend/img/favicon.ico')}}">
     <!-- end: Favicon -->
 
+
     <style type="text/css">
         body { background: url({{ URL::to('backend/img/bg-login.jpg') }}) !important; }
     </style>
