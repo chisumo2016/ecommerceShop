@@ -11,5 +11,11 @@
 |
 */
 
+//Front End
 Route::get('/', 'HomeController@index');
 
+
+
+
+//Backend
+Route::get('/admin', 'AdminController@index');
