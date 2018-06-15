@@ -73,8 +73,8 @@ class CategoryController extends Controller
     public function show($id)
     {
         //
-        $category= Category::find($id);
-        return view ('admin.category.show',compact('category'));
+        //$category= Category::find($id);
+        //return view ('admin.category.show',compact('category'));
 
     }
 
@@ -87,6 +87,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
+        $category = Category::find($id);
+        return view ('admin.category.edit',compact('category'));
     }
 
     /**
@@ -98,7 +100,25 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Validate the category input
+
+        request()->validate([
+            'category_name' =>'required',
+            'category_description' =>'required',
+            'publication_status' =>'required'
+        ]);
+
+        //update into database
+        $category = Category::find($id);
+        $category ->category_name =$request->get('category_name');
+        $category ->category_description =$request->get('category_description');
+        $category ->publication_status =$request->get('publication_status');
+        $category->save();
+
+        return redirect()->route('categories.index')->with('success','Category  Updated successfully');
+
+
+
     }
 
     /**
@@ -109,6 +129,10 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //Delete  Category
+        $category = Category::find($id);
+        $category->destroy();
+        return back();
+
     }
 }

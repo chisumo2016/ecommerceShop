@@ -45,16 +45,29 @@
                         <td class="center">{{ $category->category_name }}</td>
                         <td class="center">{{ $category->category_description }}</td>
                         <td class="center">
-                            <span class="label label-success">{{ $category->category_status}}Active</span>
+                            @if($category->publication_status == 1)
+                            <span class="label label-success">Active</span>
+                                @else
+                                <span class="label label-danger">Unactive</span>
+                            @endif
                         </td>
                         <td class="center">
-                            <a class="btn btn-success" href="#">
-                                <i class="halflings-icon white zoom-in"></i>
+                            @if($category->publication_status == 1)
+                            <a class="btn btn-danger" href="#">
+                                <i class="halflings-icon white thumbs-down"></i>
                             </a>
-                            <a class="btn btn-info" href="{{ route('categories.edit', $category->id) }}">
+
+                            @else
+                                <a class="btn btn-success" href="#">
+                                    <i class="halflings-icon white thumbs-up"></i>
+                                </a>
+                            @endif
+                            <a class="btn btn-info" href="{{ route('categories.edit', $category->id)}}">
                                 <i class="halflings-icon white edit"></i>
                             </a>
-                            <a class="btn btn-danger" href="#">
+
+
+                            <a class="btn btn-danger" href="{{ route('categories.destroy', $category->id) }}">
                                 <i class="halflings-icon white trash"></i>
                             </a>
                         </td>
