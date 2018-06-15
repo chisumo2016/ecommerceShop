@@ -28,7 +28,9 @@ Route::get('/logout', 'SuperAdminController@logout');
 
 Route::resource('categories', 'CategoryController');
 
-
+//Route::get('unactive_category/{category_id}', 'CategoryController@unactive');
+//Route::get('active_category/{category_id}', 'CategoryController@active');
+Route::get('category/{category_id}', 'CategoryController@UpdateStatus');
 
 
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Requests\StoreCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class CategoryController extends Controller
 {
@@ -135,4 +137,35 @@ class CategoryController extends Controller
         return back();
 
     }
+
+    public function  UpdateStatus($category_id)
+    {
+        $category = Category::findOrFail($category_id);
+        if($category->publication_status !=0){
+            $category->update([
+
+                'publication_status' => 0
+            ]);
+
+            $status ='Deactivated';
+        }else{
+            $category->update([
+
+                'publication_status' => 1
+            ]);
+
+            $status ='Activated';
+        }
+
+        return redirect()->route('categories.index')->with('success','Category'.$status.' successfully');
+    }
+}
+
+
+//public function  unactive($category_id)
+{
+//       DB::table('categories')
+//           ->where('id',$category_id)
+//           ->update(['publication_status' => 0]);
+//          return redirect()->route('categories.index')->with('success','Category  Unactive successfully');
 }
