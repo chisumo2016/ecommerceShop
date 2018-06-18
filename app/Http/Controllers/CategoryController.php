@@ -18,7 +18,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
-        $categories = Category::paginate(5);
+        //$categories = Category::paginate(5);
+        $categories = Category::all();
         return view('admin.category.index',compact('categories'));
 
     }
@@ -132,14 +133,13 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //Delete  Category
-        $category = Category::find($id);
-        $category->destroy();
-        return back();
-
+        category::where('id', $id)->delete();
+        return redirect()->route('categories.index')->with('success','Category  deleted successfully');
     }
 
     public function  UpdateStatus($category_id)
     {
+
         $category = Category::findOrFail($category_id);
         if($category->publication_status !=0){
             $category->update([

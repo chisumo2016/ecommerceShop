@@ -25,12 +25,35 @@ Route::post('/admin-dashboard', 'AdminController@dashboard');
 Route::get('/logout', 'SuperAdminController@logout');
 
 
-
+//Categories
 Route::resource('categories', 'CategoryController');
+Route::get('category/{category_id}', 'CategoryController@UpdateStatus');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//Route::delete('categories/{category_id} ', 'CategoryController@delete')
 //Route::get('unactive_category/{category_id}', 'CategoryController@unactive');
 //Route::get('active_category/{category_id}', 'CategoryController@active');
-Route::get('category/{category_id}', 'CategoryController@UpdateStatus');
+
 
 
 
