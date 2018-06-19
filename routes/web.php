@@ -28,7 +28,10 @@ Route::resource('categories', 'CategoryController');
 Route::get('category/{category_id}', 'CategoryController@UpdateStatus');
 
 
+//Manufacture/Brands
 
+Route::resource('manufactures', 'ManufactureController');
+Route::get('manufacture/{manufacture_id}', 'ManufactureController@UpdateStatus');
 
 
 

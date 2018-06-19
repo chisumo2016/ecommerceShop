@@ -343,7 +343,9 @@
 
                     <li><a href="{{ route('categories.create') }}"><i class="icon-tasks"></i><span class="hidden-tablet"> Add Category</span></a></li>
 
-                    <li><a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> All Brand</span></a></li>
+                    <li><a href="{{ route('manufactures.index') }}"><i class="icon-eye-open"></i><span class="hidden-tablet"> All Brand</span></a></li>
+
+                    <li><a href="{{ route('manufactures.create') }}"><i class="icon-tasks"></i><span class="hidden-tablet"> Add Brand</span></a></li>
 
                     {{--<li><a href="widgets.html"><i class="icon-dashboard"></i><span class="hidden-tablet"> Widgets</span></a></li>--}}
                     <li>
