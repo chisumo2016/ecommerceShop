@@ -27,12 +27,7 @@
                                     @foreach($manufactures as $manufacture)
                                     <li><a href="#"> <span class="pull-right">(50)</span>{{ $manufacture->manufacture_name }}</a>
                                     @endforeach
-                                    {{--<li><a href="#"> <span class="pull-right">(56)</span>Grüne Erde</a></li>--}}
-                                    {{--<li><a href="#"> <span class="pull-right">(27)</span>Albiro</a></li>--}}
-                                    {{--<li><a href="#"> <span class="pull-right">(32)</span>Ronhill</a></li>--}}
-                                    {{--<li><a href="#"> <span class="pull-right">(5)</span>Oddmolly</a></li>--}}
-                                    {{--<li><a href="#"> <span class="pull-right">(9)</span>Boudestijn</a></li>--}}
-                                    {{--<li><a href="#"> <span class="pull-right">(4)</span>Rösch creative culture</a></li>--}}
+
                                 </ul>
                             </div>
                         </div><!--/brands_products-->
@@ -54,7 +49,7 @@
 
                 <div class="col-sm-9 padding-right">
                     <div class="features_items"><!--features_items-->
-                        <h2 class="title text-center">Features Items</h2>
+                        <h2 class="title text-center">Products Items</h2>
                         <div class="col-sm-4">
                             <div class="product-image-wrapper">
                                 <div class="single-products">

@@ -36,8 +36,9 @@ Route::resource('manufactures', 'ManufactureController');
 Route::get('manufacture/{manufacture_id}', 'ManufactureController@UpdateStatus');
 
 
+//Products
 
-
+Route::resource('products', 'ProductController');
 
 
 
