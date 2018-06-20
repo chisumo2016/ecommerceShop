@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     //
-    protected  $fillable = [
+    protected $fillable = [
 
         'category_id',
         'manufacture_id',
@@ -21,14 +21,17 @@ class Product extends Model
         'publication_status'
 
 
-
-
-
     ];
 
 
-    public function category()
+    public function categories()
     {
         return $this->belongsTo('App\Category');
+    }
+
+    public function manufactures()
+    {
+        return $this->belongsTo('App\Manufacture');
+
     }
 }

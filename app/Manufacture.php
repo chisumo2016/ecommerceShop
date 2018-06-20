@@ -12,4 +12,10 @@ class Manufacture extends Model
         'manufacture_description',
         'publication_status'
     ];
+
+    public function products()
+    {
+        return $this->hasMany('App\Product');
+    }
+
 }

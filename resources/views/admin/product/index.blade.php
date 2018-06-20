@@ -8,7 +8,7 @@
             <a href="{{ URL::to('/dashboard') }}">Home</a>
             <i class="icon-angle-right"></i>
         </li>
-        <li><a href="{{ URL::to('/dashboard') }}">Category</a></li>
+        <li><a href="{{ URL::to('/dashboard') }}">Product</a></li>
     </ul>
 
     <div class="row-fluid sortable">
@@ -21,7 +21,7 @@
             @endif
 
             <div class="box-header" data-original-title>
-                <h2><i class="halflings-icon user"></i><span class="break"></span>View All Category</h2>
+                <h2><i class="halflings-icon user"></i><span class="break"></span>View All Product</h2>
                 <div class="box-icon">
                     <a href="#" class="btn-setting"><i class="halflings-icon wrench"></i></a>
                     <a href="#" class="btn-minimize"><i class="halflings-icon chevron-up"></i></a>
@@ -32,23 +32,34 @@
                 <table class="table table-striped table-bordered bootstrap-datatable datatable">
                     <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>category_name</th>
-                        <th>category_description</th>
+                        <th>ID</th>
+                        <th>Product  Name</th>
+                        <th>Category Name</th>
+                        <th>Manufacture Name</th>
+
+                        <th>Product  Price</th>
+                        <th>Product  Image</th>
+                        <th>Product  Size </th>
+                        <th>Product  Color </th>
                         <th>publication_status </th>
                         <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($categories as $category)
+                    @foreach($products as $product)
                      <tr>
 
-                        <td>{{ $category->id }}</td>
-                        <td class="center">{{ $category->category_name }}</td>
-                        <td class="center">{{ $category->category_description }}</td>
+                        <td>{{ $product->id }}</td>
+                        <td class="center">{{ $product->product_name }} </td>
+                        <td class="center">{{ $product->category_name }} </td>
+                        <td class="center">{{ $product->manufacture_name }} </td>
+                        <td class="center">{{ $product->product_price }}</td>
+                        <td class="center"><img src="{{asset('image/' .$product->product_image)}}" style="width: 80px; height: 80px" alt=""></td>
+                        <td class="center">{{ $product->product_size }}</td>
+                        <td class="center">{{ $product->product_color }}</td>
 
                         <td class="center">
-                            @if($category->publication_status == 1)
+                            @if($product->publication_status == 1)
                             <span class="label label-success">Activated</span>
                                 @else
                                 <span class="label label-danger">Deactivated</span>
@@ -57,27 +68,27 @@
                         </td>
 
                         <td class="center">
-                            @if($category->publication_status == 1)
-                            <a class="btn btn-danger" href="{{ URL::to('/category/'.$category->id) }}">
+                            @if($product->publication_status == 1)
+                            <a class="btn btn-danger" href="{{ URL::to('/category/'.$product->id) }}">
                                 <i class="halflings-icon white thumbs-down"></i>
                             </a>
 
                             @else
-                                <a class="btn btn-success" href="{{ URL::to('/category/'.$category->id) }}">
+                                <a class="btn btn-success" href="{{ URL::to('/category/'.$product->id) }}">
                                     <i class="halflings-icon white thumbs-up"></i>
                                 </a>
                             @endif
 
                         </td>
                          <td>
-                             <a class="btn btn-info" href="{{ route('categories.edit', $category->id)}}">
+                             <a class="btn btn-info" href="{{ route('categories.edit', $product->id)}}">
                                  <i class="halflings-icon white edit"></i>
                              </a>
                          </td>
 
                          <td>
 
-                             <form  id="delete-form-{{ $category->id }}" action="{{ route('categories.destroy',$category->id) }}" method="post" >
+                             <form  id="delete-form-{{ $product->id }}" action="{{ route('categories.destroy',$product->id) }}" method="post" >
 
                                  {{ csrf_field() }}
                                  {{method_field('DELETE')}}
@@ -85,7 +96,7 @@
                                  <a href=""  class="btn btn-danger" onclick="
                                          if(confirm('Are you sure ,You Want to delete this ? '))
                                          {
-                                         event.preventDefault();document.getElementById('delete-form-{{ $category->id }}').submit();
+                                         event.preventDefault();document.getElementById('delete-form-{{ $product->id }}').submit();
                                          }
                                          else{
                                          event.preventDefault()
@@ -94,7 +105,7 @@
 
                          </td>
 
-                         {{--<a class="btn btn-danger" href="{{ route('categories.destroy', $category->id) }}">--}}
+                         {{--<a class="btn btn-danger" href="{{ route('categories.destroy', $product->id) }}">--}}
                              {{--<i class="halflings-icon white trash"></i>--}}
                          {{--</a>--}}
                     </tr>

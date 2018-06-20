@@ -18,14 +18,22 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $products = Product::all();
-        $categories = Category::all();
-        return view('admin.product.index',
-                [
-                    'products'  => $products,
-                    'categories' => $categories,
 
-            ]);
+        $products  = Product::with('categories')
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->join('manufactures', 'products.manufacture_id', '=', 'manufactures.id')
+            ->get();
+            return view('admin.product.index',compact('products'));
+
+
+//        $products = Product::all();
+//        $categories = Category::all();
+//
+//        return view('admin.product.index',[
+//              'products' =>$products,
+//              'categories' =>$categories,
+//            ]);
+
     }
 
     /**
@@ -91,6 +99,8 @@ class ProductController extends Controller
         $product->publication_status            = $request->publication_status;
 
         $product->save();
+
+        $product->categories()->sync($request->categories);
 
         return redirect()->route('products.create')->with('success', 'Product created successfully');
 
